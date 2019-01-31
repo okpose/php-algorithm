@@ -6,12 +6,14 @@ use Okpose\Algorithm\Exceptions\InvalidSortException;
 
 class Collection implements \ArrayAccess
 {
-    const SORT_METHOD_MERGE = 'Merge';
+    const SORT_METHOD_BUBBLE_MERGE = 'BubbleMerge';
+    const SORT_METHOD_RECURSION_MERGE = 'RecursionMerge';
     const SORT_METHOD_INSERTION = 'Insertion';
     const SORT_METHOD_SELECTION = 'Selection';
     const SORT_METHOD_BUBBLE = 'Bubble';
     const SORT_METHOD_SHELL = 'Shell';
 
+    private $options = ['method' => self::SORT_METHOD_BUBBLE_MERGE, 'showProfile' => false];
     private $arr = [];
     public function __construct($arr)
     {
@@ -38,11 +40,12 @@ class Collection implements \ArrayAccess
         $this->arr[$offset] = $value;
     }
 
-    public function sort($options = ['method' => self::SORT_METHOD_MERGE, 'showProfile' => false])
+    public function sort($options = [])
     {
-        $className = __NAMESPACE__ . "\\Sorts\\" . $options['method'];
+        $this->options = $options + $this->options;
+        $className = __NAMESPACE__ . "\\Sorts\\" . $this->options['method'];
         if (!class_exists($className)) {
-            throw new InvalidSortException("不存在此排序算法:" . $options['algorithm']);
+            throw new InvalidSortException("不存在此排序算法:" . $this->options['algorithm']);
         }
 
         $startTime = Helper::mstime();

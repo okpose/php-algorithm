@@ -2,7 +2,9 @@
 
 namespace Okpose\Algorithm\Sorts;
 
-class Shell
+use Okpose\Algorithm\Interfaces\Sort;
+
+class Shell implements Sort
 {
     public function title()
     {

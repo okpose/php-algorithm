@@ -15,11 +15,19 @@ use Rink\Weather\Weather;
 
 class AlgorithmTest extends TestCase
 {
-    public function testMergeSort()
+    public function testBubbleMergeSort()
     {
         $arr = Helper::generateRandomArray(3000, 0,1000);
         $col = new Collection($arr);
-        $col->sort(['method' => Collection::SORT_METHOD_MERGE, 'showProfile' => true]);
+        $col->sort(['method' => Collection::SORT_METHOD_BUBBLE_MERGE, 'showProfile' => true]);
+        $this->assertTrue(Helper::isSorted($col));
+    }
+
+    public function testRecursionMergeSort()
+    {
+        $arr = Helper::generateRandomArray(3000, 0,1000);
+        $col = new Collection($arr);
+        $col->sort(['method' => Collection::SORT_METHOD_RECURSION_MERGE, 'showProfile' => true]);
         $this->assertTrue(Helper::isSorted($col));
     }
 
@@ -53,5 +61,10 @@ class AlgorithmTest extends TestCase
         $col = new Collection($arr);
         $col->sort(['method' => Collection::SORT_METHOD_SHELL, 'showProfile' => true]);
         $this->assertTrue(Helper::isSorted($col));
+    }
+
+    public function testTrue()
+    {
+        $this->assertTrue(true);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Okpose\Algorithm\Sorts;
 
-class Bubble
+use Okpose\Algorithm\Interfaces\Sort;
+
+class Bubble implements Sort
 {
     public function title()
     {

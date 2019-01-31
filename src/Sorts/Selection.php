@@ -2,7 +2,9 @@
 
 namespace Okpose\Algorithm\Sorts;
 
-class Selection
+use Okpose\Algorithm\Interfaces\Sort;
+
+class Selection implements Sort
 {
     public function title()
     {
