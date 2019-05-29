@@ -12,6 +12,7 @@ class Collection implements \ArrayAccess
     const SORT_METHOD_SELECTION = 'Selection';
     const SORT_METHOD_BUBBLE = 'Bubble';
     const SORT_METHOD_SHELL = 'Shell';
+    const SORT_METHOD_INDEXMAXHEAP = 'IndexMaxHeap';
 
     private $options = ['method' => self::SORT_METHOD_BUBBLE_MERGE, 'showProfile' => false];
     private $arr = [];

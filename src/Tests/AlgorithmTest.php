@@ -63,6 +63,14 @@ class AlgorithmTest extends TestCase
         $this->assertTrue(Helper::isSorted($col));
     }
 
+    public function testIndexMaxHeapSort()
+    {
+        $arr = Helper::generateRandomArray(3000, 0,1000);
+        $col = new Collection($arr);
+        $col->sort(['method' => Collection::SORT_METHOD_INDEXMAXHEAP, 'showProfile' => true]);
+        $this->assertTrue(Helper::isSorted($col));
+    }
+
     public function testTrue()
     {
         $this->assertTrue(true);
